@@ -3,83 +3,171 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
-      {/* Header / Navigation */}
-      <header className="fixed top-0 z-50 w-full border-b border-mina-gold/10 bg-background/80 backdrop-blur-md">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-2">
-            <span className="font-serif text-2xl font-bold tracking-widest text-foreground">
-              MINA <span className="text-mina-gold font-light italic">GLAMOUR</span>
+    <div className="flex min-h-screen flex-col bg-background text-foreground selection:bg-mina-gold selection:text-white">
+      {/* Premium Navigation */}
+      <header className="fixed top-0 z-50 w-full glass transition-all duration-500">
+        <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-8 py-6">
+          <Link href="/" className="group flex flex-col items-center">
+            <span className="font-serif text-3xl font-bold tracking-[0.3em] transition-all group-hover:tracking-[0.4em]">
+              MINA
             </span>
+            <span className="text-mina-gold -mt-1 text-[10px] font-bold uppercase tracking-[0.8em]">
+              GLAMOUR
+            </span>
+          </Link>
+
+          <div className="hidden space-x-12 text-[11px] font-bold uppercase tracking-[0.25em] md:flex">
+            {["Cheveux", "Prêt-à-porter", "Enfants", "L'Atelier"].map((item) => (
+              <Link
+                key={item}
+                href="#"
+                className="relative after:absolute after:-bottom-2 after:left-1/2 after:h-[1px] after:w-0 after:bg-mina-gold after:transition-all after:duration-300 hover:after:left-0 hover:after:w-full"
+              >
+                {item}
+              </Link>
+            ))}
           </div>
-          <div className="hidden space-x-8 text-sm font-medium uppercase tracking-[0.2em] md:flex">
-            <Link href="#hair" className="hover:text-mina-gold transition-colors">Cheveux</Link>
-            <Link href="#fashion" className="hover:text-mina-gold transition-colors">Prêt-à-porter</Link>
-            <Link href="#mag" className="hover:text-mina-gold transition-colors">Le Mag</Link>
-          </div>
-          <div>
+
+          <div className="flex items-center gap-6">
+            <Link href="/cart" className="relative transition-transform hover:scale-110">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6zM3 6h18M16 10a4 4 0 01-8 0" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
             <Link
               href="/shop"
-              className="rounded-none bg-foreground px-6 py-2 text-xs font-bold uppercase tracking-widest text-background transition-all hover:bg-mina-gold hover:text-foreground"
+              className="bg-foreground px-8 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-background transition-all hover:bg-mina-gold hover:text-white"
             >
-              Boutique
+              Collection
             </Link>
           </div>
         </nav>
       </header>
 
-      {/* Hero Section */}
       <main className="flex-grow">
-        <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
-          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-mina-gold/5 to-transparent"></div>
-          <div className="mx-auto max-w-4xl px-6 text-center">
-            <h1 className="mb-6 animate-fade-in font-serif text-5xl font-light leading-tight sm:text-7xl">
-              Cheveux de rêve, <br />
-              <span className="italic text-mina-gold">allure de Reine.</span>
+        {/* Immersive Hero Section */}
+        <section className="relative flex h-screen items-center justify-center overflow-hidden">
+          {/* Decorative background elements */}
+          <div className="absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-mina-gold/5 blur-[120px]"></div>
+
+          <div className="relative z-10 mx-auto max-w-[1200px] px-8 text-center pt-24">
+            <h2 className="animate-fade-in mb-4 text-xs font-bold uppercase tracking-[0.6em] text-mina-gold">
+              Mina Glamour — Excellence & Raffinement
+            </h2>
+            <h1 className="animate-slide-up mb-8 font-serif text-[clamp(3.5rem,10vw,8rem)] font-light leading-[1.1] tracking-tight">
+              L'Art de la <br />
+              <span className="text-gold-gradient italic">Féminité Sublime</span>
             </h1>
-            <p className="mx-auto mb-10 max-w-xl text-lg opacity-80 leading-relaxed font-sans">
-              Découvrez notre collection exclusive de cheveux naturels, robes tendance et accessoires de luxe. L'élégance africaine revisitée.
-            </p>
-            <div className="flex justify-center gap-6">
-              <Link
-                href="/collection"
-                className="border border-mina-gold bg-mina-gold px-10 py-4 text-sm font-bold uppercase tracking-widest text-foreground transition-all hover:bg-transparent"
-              >
-                Découvrir la collection
+
+            <div className="animate-slide-up space-y-10" style={{ animationDelay: '0.4s' }}>
+              <p className="mx-auto max-w-2xl text-lg font-light leading-relaxed opacity-70">
+                Découvrez des perruques de luxe, des robes d'exception et une curation exclusive pensée pour la femme moderne qui embrasse son héritage.
+              </p>
+
+              <div className="flex flex-col flex-wrap items-center justify-center gap-6 sm:flex-row">
+                <Link
+                  href="#collection"
+                  className="gold-gradient px-12 py-5 text-[11px] font-bold uppercase tracking-[0.3em] text-white shadow-2xl transition-all hover:scale-105 hover:shadow-mina-gold/20"
+                >
+                  Explorer la Boutique
+                </Link>
+                <Link
+                  href="#heritage"
+                  className="border-b border-foreground/30 py-2 text-[11px] font-bold uppercase tracking-[0.3em] transition-all hover:border-mina-gold hover:text-mina-gold"
+                >
+                  Notre Histoire
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+            <div className="h-12 w-[1px] bg-foreground/30"></div>
+          </div>
+        </section>
+
+        {/* Editorial Section - Mixed Grid */}
+        <section className="mx-auto max-w-[1600px] px-8 py-32">
+          <div className="grid grid-cols-1 gap-20 lg:grid-cols-12 items-center">
+            <div className="lg:col-span-5 space-y-8 animate-slide-up">
+              <span className="text-mina-gold text-xs font-bold uppercase tracking-widest text-mina-gold">Collections Automne-Hiver</span>
+              <h3 className="font-serif text-5xl font-light">L'Éclat du Sénéglos-Style</h3>
+              <p className="text-lg font-light leading-relaxed opacity-70">
+                Entre tradition hijab-chic et modernité internationale, nos robes sculptent une silhouette inoubliable. Chaque pièce est sélectionnée par notre Intelligence Agentique pour sa qualité et sa rareté.
+              </p>
+              <Link href="#" className="inline-block border-b border-mina-gold pb-1 text-sm font-bold italic text-mina-gold transition-all hover:pr-4">
+                Découvrir le Lookbook →
               </Link>
+            </div>
+
+            <div className="lg:col-span-7 grid grid-cols-2 gap-8">
+              <div className="animate-scale-in relative aspect-[3/4] overflow-hidden bg-zinc-200">
+                {/* Realistic Placeholder Style */}
+                <div className="absolute inset-0 flex items-center justify-center bg-mina-onyx/5">
+                  <span className="font-serif text-xl italic opacity-20 underline">Luxury Wigs</span>
+                </div>
+              </div>
+              <div className="animate-scale-in relative mt-12 aspect-[3/4] overflow-hidden bg-zinc-200" style={{ animationDelay: '0.2s' }}>
+                <div className="absolute inset-0 flex items-center justify-center bg-mina-gold/5">
+                  <span className="font-serif text-xl italic opacity-20 underline">Hijab Couture</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Category Teaser */}
-        <section className="bg-mina-onyx py-32 text-background">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-              <div className="group relative overflow-hidden bg-background/5 p-12 text-center transition-all hover:bg-background/10">
-                <h3 className="mb-4 font-serif text-3xl italic">Hair Collection</h3>
-                <p className="mb-8 text-sm opacity-60 uppercase tracking-widest">Perruques & Extensions</p>
-                <Link href="/hair" className="text-xs font-bold uppercase tracking-[0.3em] text-mina-gold hover:underline">Voir plus</Link>
-              </div>
-              <div className="group relative overflow-hidden bg-mina-gold/10 p-12 text-center transition-all hover:bg-mina-gold/20">
-                <h3 className="mb-4 font-serif text-3xl italic">Prêt-à-Porter</h3>
-                <p className="mb-8 text-sm opacity-60 uppercase tracking-widest">Robes & Chic</p>
-                <Link href="/fashion" className="text-xs font-bold uppercase tracking-[0.3em] text-mina-gold hover:underline">Voir plus</Link>
-              </div>
-              <div className="group relative overflow-hidden bg-background/5 p-12 text-center transition-all hover:bg-background/10">
-                <h3 className="mb-4 font-serif text-3xl italic">L'Univers Kids</h3>
-                <p className="mb-8 text-sm opacity-60 uppercase tracking-widest">Élégance Miniature</p>
-                <Link href="/kids" className="text-xs font-bold uppercase tracking-[0.3em] text-mina-gold hover:underline">Voir plus</Link>
-              </div>
+        {/* Stats / Trust Bar */}
+        <section className="bg-mina-emerald py-20 text-white">
+          <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-20 px-8 text-center">
+            <div>
+              <div className="font-serif text-4xl font-bold italic">100%</div>
+              <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.3em] opacity-60">Cheveux Humains</div>
+            </div>
+            <div>
+              <div className="font-serif text-4xl font-bold italic">24h</div>
+              <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.3em] opacity-60">Livraison Dakar</div>
+            </div>
+            <div>
+              <div className="font-serif text-4xl font-bold italic">Premium</div>
+              <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.3em] opacity-60">Expérience Client</div>
             </div>
           </div>
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-mina-gold/10 py-12 text-center">
-        <p className="text-xs opacity-40 uppercase tracking-[0.4em]">
-          &copy; {new Date().getFullYear()} Mina Glamour. All Rights Reserved.
-        </p>
+      <footer className="footer-bg py-20">
+        <div className="mx-auto max-w-7xl px-8">
+          <div className="grid grid-cols-1 gap-16 md:grid-cols-4">
+            <div className="col-span-2 space-y-6">
+              <span className="font-serif text-2xl font-bold tracking-widest uppercase">MINA GLAMOUR</span>
+              <p className="max-w-md text-sm leading-loose opacity-60">
+                Inspirée par la beauté des femmes sénégalaises, Mina Glamour est la destination ultime pour celles qui ne font aucun compromis sur la qualité et l'élégance.
+              </p>
+            </div>
+            <div className="space-y-6">
+              <h4 className="text-[11px] font-bold uppercase tracking-widest">Aide</h4>
+              <ul className="space-y-4 text-xs opacity-60">
+                <li><Link href="#">Livraison</Link></li>
+                <li><Link href="#">Retours</Link></li>
+                <li><Link href="#">Entretien Cheveux</Link></li>
+              </ul>
+            </div>
+            <div className="space-y-6">
+              <h4 className="text-[11px] font-bold uppercase tracking-widest">Suivez-nous</h4>
+              <ul className="space-y-4 text-xs opacity-60">
+                <li><Link href="#">Instagram</Link></li>
+                <li><Link href="#">TikTok</Link></li>
+                <li><Link href="#">WhatsApp Business</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-20 border-t border-foreground/5 pt-10 text-center">
+            <p className="text-[10px] font-bold uppercase tracking-[0.5em] opacity-40">
+              © {new Date().getFullYear()} Mina Glamour. Cheveux de rêve, allure de Reine.
+            </p>
+          </div>
+        </div>
       </footer>
     </div>
   );

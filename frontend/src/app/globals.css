@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FDF8F0; /* Champagne */
-  --foreground: #1A1A1A; /* Onyx */
+  --background: #FDF8F0;
+  /* Champagne */
+  --foreground: #1A1A1A;
+  /* Onyx */
   --mina-gold: #D4AF37;
   --mina-emerald: #043927;
+  --mina-bronze: #8D6E63;
 }
 
 @theme inline {
@@ -14,14 +17,76 @@
   --color-mina-emerald: var(--mina-emerald);
   --font-serif: var(--font-cormorant);
   --font-sans: var(--font-inter);
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  --animate-fade-in: fade-in 1s ease-out;
+  --animate-slide-up: slide-up 0.8s ease-out backwards;
+  --animate-scale-in: scale-in 0.6s ease-out;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-cormorant), serif;
+  letter-spacing: -0.02em;
+}
+
+.glass {
+  background: rgba(253, 248, 240, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #8D6E63 100%);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #8D6E63 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
