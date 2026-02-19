@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground selection:bg-mina-gold selection:text-white">
       {/* Premium Navigation */}
-      <header className="fixed top-0 z-50 w-full glass transition-all duration-500">
+      <header className="fixed top-0 left-0 right-0 z-50 glass transition-all duration-500">
         <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-8 md:py-6">
           <Link href="/" className="group flex flex-col items-center">
             <span className="font-serif text-2xl font-bold tracking-[0.3em] transition-all group-hover:tracking-[0.4em] md:text-3xl">
@@ -44,7 +44,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="flex-grow">
+      <main className="flex-grow overflow-x-hidden">
         {/* Immersive Hero Section */}
         <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 md:px-8">
           <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-mina-gold/5 blur-[80px] md:h-[800px] md:w-[800px] md:blur-[120px]"></div>
@@ -53,7 +53,7 @@ export default function Home() {
             <h2 className="animate-fade-in mb-4 text-[10px] font-bold uppercase tracking-[0.4em] text-mina-gold md:text-xs md:tracking-[0.6em]">
               Mina Glamour — Excellence & Raffinement
             </h2>
-            <h1 className="animate-slide-up mb-8 font-serif text-[clamp(2.5rem,8vw,7rem)] font-light leading-[1.1] tracking-tight">
+            <h1 className="animate-slide-up mb-8 font-serif text-[clamp(2.5rem,8vw,7rem)] font-light leading-[1.1] tracking-tight max-w-full break-words sm:text-[clamp(3.5rem,10vw,8rem)]">
               L'Art de la <br />
               <span className="text-gold-gradient italic">Féminité Sublime</span>
             </h1>
@@ -66,7 +66,7 @@ export default function Home() {
               <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
                 <Link
                   href="#collection"
-                  className="gold-gradient w-full px-12 py-5 text-[11px] font-bold uppercase tracking-[0.3em] text-white shadow-2xl transition-all hover:scale-105 hover:shadow-mina-gold/20 sm:w-auto"
+                  className="gold-gradient w-64 px-12 py-5 text-[11px] font-bold uppercase tracking-[0.3em] text-white shadow-2xl transition-all hover:scale-105 hover:shadow-mina-gold/20 sm:w-auto"
                 >
                   Explorer la Boutique
                 </Link>
@@ -87,7 +87,7 @@ export default function Home() {
         </section>
 
         {/* Featured Collections Section */}
-        <section id="collection" className="mx-auto max-w-7xl px-6 py-20 md:px-8 md:py-32">
+        <section id="collection" className="mx-auto max-w-7xl px-6 py-20 md:px-8 md:py-32 overflow-hidden">
           <div className="mb-16 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
             <div className="space-y-4">
               <h2 className="text-[10px] font-bold uppercase tracking-[0.3em] text-mina-gold md:text-xs md:tracking-[0.4em]">Curations Exclusives</h2>
@@ -152,7 +152,7 @@ export default function Home() {
         </section>
 
         {/* Editorial Section - Mixed Grid */}
-        <section className="mx-auto max-w-[1600px] px-6 py-20 md:px-8 md:py-32">
+        <section className="mx-auto max-w-[1600px] px-6 py-20 md:px-8 md:py-32 overflow-hidden">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-20 items-center">
             <div className="lg:col-span-5 space-y-6 md:space-y-8 animate-slide-up">
               <span className="text-mina-gold text-[10px] font-bold uppercase tracking-widest md:text-xs">Collections Automne-Hiver</span>
@@ -182,24 +182,24 @@ export default function Home() {
 
         {/* Stats / Trust Bar */}
         <section className="bg-mina-emerald py-16 md:py-24 text-white overflow-hidden">
-          <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-10 px-6 text-center md:gap-20">
-            <div className="min-w-[140px]">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 text-center sm:grid-cols-3 md:gap-20">
+            <div className="space-y-1">
               <div className="font-serif text-3xl font-bold italic md:text-4xl">100%</div>
-              <div className="mt-2 text-[8px] font-bold uppercase tracking-[0.2em] opacity-60 md:text-[10px] md:tracking-[0.3em]">Cheveux Humains</div>
+              <div className="text-[8px] font-bold uppercase tracking-[0.2em] opacity-60 md:text-[10px] md:tracking-[0.3em]">Cheveux Humains</div>
             </div>
-            <div className="min-w-[140px]">
+            <div className="space-y-1">
               <div className="font-serif text-3xl font-bold italic md:text-4xl">24h</div>
-              <div className="mt-2 text-[8px] font-bold uppercase tracking-[0.2em] opacity-60 md:text-[10px] md:tracking-[0.3em]">Livraison Dakar</div>
+              <div className="text-[8px] font-bold uppercase tracking-[0.2em] opacity-60 md:text-[10px] md:tracking-[0.3em]">Livraison Dakar</div>
             </div>
-            <div className="min-w-[140px]">
+            <div className="space-y-1">
               <div className="font-serif text-3xl font-bold italic md:text-4xl">Premium</div>
-              <div className="mt-2 text-[8px] font-bold uppercase tracking-[0.2em] opacity-60 md:text-[10px] md:tracking-[0.3em]">Expérience Client</div>
+              <div className="text-[8px] font-bold uppercase tracking-[0.2em] opacity-60 md:text-[10px] md:tracking-[0.3em]">Expérience Client</div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="footer-bg py-16 md:py-24">
+      <footer className="footer-bg py-16 md:py-24 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 md:px-8">
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4 md:gap-16">
             <div className="sm:col-span-2 space-y-6">
