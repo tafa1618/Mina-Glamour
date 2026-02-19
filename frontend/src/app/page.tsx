@@ -87,6 +87,71 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Featured Collections Section */}
+        <section id="collection" className="mx-auto max-w-7xl px-8 py-32">
+          <div className="mb-16 flex items-end justify-between">
+            <div className="space-y-4">
+              <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-mina-gold">Curations Exclusives</h2>
+              <h3 className="font-serif text-5xl font-light">Les Essentiels de la Reine</h3>
+            </div>
+            <Link href="/shop" className="text-xs font-bold uppercase tracking-widest border-b border-foreground pb-1 hover:text-mina-gold hover:border-mina-gold transition-all">
+              Tout Voir
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
+            {/* PRODUCT 1: HAIR */}
+            <div className="group cursor-pointer">
+              <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
+                <div className="absolute inset-0 flex items-center justify-center bg-mina-onyx/5 group-hover:scale-110 transition-transform duration-700">
+                  <span className="font-serif text-lg italic opacity-20">Brazilian Deep Wave</span>
+                </div>
+                <div className="absolute top-4 left-4 bg-mina-gold px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-white">Best-Seller</div>
+              </div>
+              <h4 className="font-serif text-xl mb-1">Perruque Lace Frontal 13x4</h4>
+              <p className="text-[10px] uppercase tracking-widest opacity-50 mb-3">Cheveux Humains Brésiliens - 22 pouces</p>
+              <p className="font-sans font-bold text-mina-gold">85.000 FCFA</p>
+            </div>
+
+            {/* PRODUCT 2: FASHION */}
+            <div className="group cursor-pointer">
+              <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
+                <div className="absolute inset-0 flex items-center justify-center bg-mina-gold/5 group-hover:scale-110 transition-transform duration-700">
+                  <span className="font-serif text-lg italic opacity-20">Abaya Prestige</span>
+                </div>
+                <div className="absolute top-4 left-4 bg-foreground px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-background">Nouveauté</div>
+              </div>
+              <h4 className="font-serif text-xl mb-1">Ensemble Abaya Melhfa</h4>
+              <p className="text-[10px] uppercase tracking-widest opacity-50 mb-3">Soie de Médine - Coloris Sable</p>
+              <p className="font-sans font-bold text-mina-gold">45.000 FCFA</p>
+            </div>
+
+            {/* PRODUCT 3: HAIR */}
+            <div className="group cursor-pointer">
+              <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
+                <div className="absolute inset-0 flex items-center justify-center bg-mina-onyx/5 group-hover:scale-110 transition-transform duration-700">
+                  <span className="font-serif text-lg italic opacity-20">Straight Silk Wigs</span>
+                </div>
+              </div>
+              <h4 className="font-serif text-xl mb-1">Perruque Lisse "Silk Touch"</h4>
+              <p className="text-[10px] uppercase tracking-widest opacity-50 mb-3">Grade 12A - 18 pouces - Densité 180%</p>
+              <p className="font-sans font-bold text-mina-gold">75.000 FCFA</p>
+            </div>
+
+            {/* PRODUCT 4: KIDS */}
+            <div className="group cursor-pointer">
+              <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
+                <div className="absolute inset-0 flex items-center justify-center bg-mina-gold/5 group-hover:scale-110 transition-transform duration-700">
+                  <span className="font-serif text-lg italic opacity-20">Mina Petite</span>
+                </div>
+              </div>
+              <h4 className="font-serif text-xl mb-1">Robe Cérémonie "Petite Reine"</h4>
+              <p className="text-[10px] uppercase tracking-widest opacity-50 mb-3">Tulle & Satin - 2 à 10 ans</p>
+              <p className="font-sans font-bold text-mina-gold">32.500 FCFA</p>
+            </div>
+          </div>
+        </section>
+
         {/* Editorial Section - Mixed Grid */}
         <section className="mx-auto max-w-[1600px] px-8 py-32">
           <div className="grid grid-cols-1 gap-20 lg:grid-cols-12 items-center">
