@@ -3,42 +3,49 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground selection:bg-mina-gold selection:text-white">
+    <div id="top" className="flex min-h-screen flex-col bg-background text-foreground selection:bg-mina-gold selection:text-white">
       {/* Premium Navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 glass transition-all duration-500">
         <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-8 md:py-6">
-          <Link href="/" className="group flex flex-col items-center">
-            <span className="font-serif text-2xl font-bold tracking-[0.3em] transition-all group-hover:tracking-[0.4em] md:text-3xl">
-              MINA
-            </span>
-            <span className="text-mina-gold -mt-1 text-[8px] font-bold uppercase tracking-[0.8em] md:text-[10px]">
+          <Link href="/#top" className="group flex flex-col items-center">
+            <div className="relative h-14 w-14 md:h-20 md:w-20 overflow-hidden rounded-full border-2 border-mina-gold/20 transition-transform group-hover:scale-105 group-hover:border-mina-gold/50 shadow-xl">
+              <Image
+                src="/logo_mina_glamour.jpg"
+                alt="Mina Glamour Logo"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            <span className="text-mina-gold mt-1 text-[8px] font-bold uppercase tracking-[0.8em] md:text-[10px]">
               GLAMOUR
             </span>
           </Link>
 
-          <div className="hidden space-x-8 text-[11px] font-bold uppercase tracking-[0.25em] md:flex lg:space-x-12">
+          <div className="hidden space-x-12 text-[11px] font-bold uppercase tracking-[0.3em] md:flex lg:space-x-16">
             {["Cheveux", "Prêt-à-porter", "Enfants", "L'Atelier"].map((item) => (
               <Link
                 key={item}
                 href="#"
-                className="relative after:absolute after:-bottom-2 after:left-1/2 after:h-[1px] after:w-0 after:bg-mina-gold after:transition-all after:duration-300 hover:after:left-0 hover:after:w-full"
+                className="relative text-foreground/80 transition-colors hover:text-mina-gold after:absolute after:-bottom-2 after:left-1/2 after:h-[1px] after:w-0 after:bg-mina-gold after:transition-all after:duration-300 hover:after:left-0 hover:after:w-full"
               >
                 {item}
               </Link>
             ))}
           </div>
 
-          <div className="flex items-center gap-4 md:gap-6">
-            <Link href="/cart" className="relative transition-transform hover:scale-110">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <div className="flex items-center gap-6 md:gap-8">
+            <Link href="/cart" className="relative text-foreground/70 transition-colors hover:text-mina-gold hover:scale-110">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6zM3 6h18M16 10a4 4 0 01-8 0" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
             <Link
               href="/shop"
-              className="bg-foreground px-4 py-2 text-[9px] font-bold uppercase tracking-[0.2em] text-background transition-all hover:bg-mina-gold hover:text-white md:px-8 md:py-3 md:text-[10px]"
+              className="group relative overflow-hidden bg-foreground px-8 py-3 text-[10px] font-bold uppercase tracking-[0.25em] text-background transition-all hover:bg-mina-gold hover:text-white md:px-10 md:py-4"
             >
-              Shop
+              <span className="relative z-10">Shop</span>
+              <div className="absolute inset-0 -translate-x-full bg-mina-gold transition-transform duration-300 group-hover:translate-x-0"></div>
             </Link>
           </div>
         </nav>
@@ -49,11 +56,11 @@ export default function Home() {
         <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 md:px-8">
           <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-mina-gold/5 blur-[80px] md:h-[800px] md:w-[800px] md:blur-[120px]"></div>
 
-          <div className="relative z-10 mx-auto max-w-[1200px] text-center pt-24">
-            <h2 className="animate-fade-in mb-4 text-[10px] font-bold uppercase tracking-[0.4em] text-mina-gold md:text-xs md:tracking-[0.6em]">
+          <div className="relative z-10 mx-auto max-w-[1200px] text-center pt-40 md:pt-48">
+            <h2 className="animate-fade-in mb-6 text-[10px] font-bold uppercase tracking-[0.5em] text-mina-bronze md:text-sm md:tracking-[0.7em]">
               Mina Glamour — Excellence & Raffinement
             </h2>
-            <h1 className="animate-slide-up mb-8 font-serif text-[clamp(2.5rem,8vw,7rem)] font-light leading-[1.1] tracking-tight max-w-full break-words sm:text-[clamp(3.5rem,10vw,8rem)]">
+            <h1 className="animate-slide-up mb-8 font-serif text-[clamp(2.5rem,9vw,8rem)] font-light leading-[1.1] tracking-tight max-w-full break-words sm:text-[clamp(3.5rem,10vw,9rem)]">
               L'Art de la <br />
               <span className="text-gold-gradient italic">Féminité Sublime</span>
             </h1>
@@ -99,54 +106,61 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {/* PRODUCT 1: HAIR */}
+            {/* PRODUCT 1: VIETNAM DDR NOIR 12" */}
             <div className="group cursor-pointer">
               <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
                 <div className="absolute inset-0 flex items-center justify-center bg-mina-onyx/5 group-hover:scale-110 transition-transform duration-700">
-                  <span className="font-serif text-lg italic opacity-20 text-center px-4">Brazilian Deep Wave</span>
+                  <span className="font-serif text-lg italic opacity-20 text-center px-4">Vietnam Double Drawn 12"</span>
                 </div>
-                <div className="absolute top-4 left-4 bg-mina-gold px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-white">Best-Seller</div>
+                <div className="absolute top-4 left-4 bg-mina-gold px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-white">Luxe Authentique</div>
               </div>
-              <h4 className="font-serif text-lg mb-1 md:text-xl">Perruque Lace Frontal 13x4</h4>
-              <p className="text-[9px] uppercase tracking-widest opacity-50 mb-3 md:text-[10px]">Cheveux Humains Brésiliens - 22 pouces</p>
-              <p className="font-sans font-bold text-mina-gold">85.000 FCFA</p>
+              <h4 className="font-serif text-lg mb-1 md:text-xl">Vietnamienne Double Drawn 12"</h4>
+              <p className="text-[9px] uppercase tracking-widest opacity-50 mb-3 md:text-[10px]">Noir Ébène - Densité Premium - 100% Naturel</p>
+              <div className="flex items-center gap-3">
+                <p className="font-sans font-bold text-mina-gold">85.000 FCFA</p>
+              </div>
             </div>
 
-            {/* PRODUCT 2: FASHION */}
+            {/* PRODUCT 2: KINKY RAW HAIR 18" */}
             <div className="group cursor-pointer">
               <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
                 <div className="absolute inset-0 flex items-center justify-center bg-mina-gold/5 group-hover:scale-110 transition-transform duration-700">
-                  <span className="font-serif text-lg italic opacity-20 text-center px-4">Abaya Prestige</span>
+                  <span className="font-serif text-lg italic opacity-20 text-center px-4">Kinky Raw Hair 18"</span>
                 </div>
-                <div className="absolute top-4 left-4 bg-foreground px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-background">Nouveauté</div>
+                <div className="absolute top-4 left-4 bg-mina-emerald px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-white">Rare & Pur</div>
               </div>
-              <h4 className="font-serif text-lg mb-1 md:text-xl">Ensemble Abaya Melhfa</h4>
-              <p className="text-[9px] uppercase tracking-widest opacity-50 mb-3 md:text-[10px]">Soie de Médine - Coloris Sable</p>
-              <p className="font-sans font-bold text-mina-gold">45.000 FCFA</p>
+              <h4 className="font-serif text-lg mb-1 md:text-xl">Kinky Raw Hair 18"</h4>
+              <p className="text-[9px] uppercase tracking-widest opacity-50 mb-3 md:text-[10px]">Texture Royale - Unseul donneur - Luxe Brut</p>
+              <p className="font-sans font-bold text-mina-gold">175.000 FCFA</p>
             </div>
 
-            {/* PRODUCT 3: HAIR */}
+            {/* PRODUCT 3: VIETNAM DDR MARRON 18" */}
             <div className="group cursor-pointer">
               <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
                 <div className="absolute inset-0 flex items-center justify-center bg-mina-onyx/5 group-hover:scale-110 transition-transform duration-700">
-                  <span className="font-serif text-lg italic opacity-20 text-center px-4">Straight Silk Wigs</span>
+                  <span className="font-serif text-lg italic opacity-20 text-center px-4">Vietnam DDR Marron 18"</span>
                 </div>
+                <div className="absolute top-4 left-4 bg-mina-bronze px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-white">Édition Limitée</div>
               </div>
-              <h4 className="font-serif text-lg mb-1 md:text-xl">Perruque Lisse "Silk Touch"</h4>
-              <p className="text-[9px] uppercase tracking-widest opacity-50 mb-3 md:text-[10px]">Grade 12A - 18 pouces - Densité 180%</p>
-              <p className="font-sans font-bold text-mina-gold">75.000 FCFA</p>
+              <h4 className="font-serif text-lg mb-1 md:text-xl">Vietnamienne Marron Luxury 18"</h4>
+              <p className="text-[9px] uppercase tracking-widest opacity-50 mb-3 md:text-[10px]">Double Drawn - Soyeux - Couleur Profonde</p>
+              <p className="font-sans font-bold text-mina-gold">215.000 FCFA</p>
             </div>
 
-            {/* PRODUCT 4: KIDS */}
+            {/* PRODUCT 4: FASHION BAG SET */}
             <div className="group cursor-pointer">
               <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
                 <div className="absolute inset-0 flex items-center justify-center bg-mina-gold/5 group-hover:scale-110 transition-transform duration-700">
-                  <span className="font-serif text-lg italic opacity-20 text-center px-4">Mina Petite</span>
+                  <span className="font-serif text-lg italic opacity-20 text-center px-4">Mina Fashion Bag Set</span>
                 </div>
+                <div className="absolute top-4 left-4 bg-mina-gold px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-white">Offre Lancement</div>
               </div>
-              <h4 className="font-serif text-lg mb-1 md:text-xl">Robe Cérémonie "Petite Reine"</h4>
-              <p className="text-[9px] uppercase tracking-widest opacity-50 mb-3 md:text-[10px]">Tulle & Satin - 2 à 10 ans</p>
-              <p className="font-sans font-bold text-mina-gold">32.500 FCFA</p>
+              <h4 className="font-serif text-lg mb-1 md:text-xl">Ensemble Sac "Mina Queen"</h4>
+              <p className="text-[9px] uppercase tracking-widest opacity-50 mb-3 md:text-[10px]">3 Pièces - Noir / Marron / Rouge</p>
+              <div className="flex items-center gap-2">
+                <p className="font-sans font-bold text-mina-gold">12.900 FCFA</p>
+                <span className="text-[10px] line-through opacity-30 italic">19.900 FCFA</span>
+              </div>
             </div>
           </div>
         </section>
