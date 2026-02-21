@@ -1,7 +1,26 @@
-import Link from "next/link";
-import Image from "next/image";
+import { fetchGraphQL } from "./lib/api";
 
-export default function Home() {
+export default async function Home() {
+  const data = await fetchGraphQL(`
+    query GetLatestContent {
+      posts(first: 4) {
+        nodes {
+          id
+          title
+          excerpt
+          date
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+        }
+      }
+    }
+  `).catch(() => ({ posts: { nodes: [] } }));
+
+  const livePosts = data.posts?.nodes || [];
+
   return (
     <div id="top" className="flex min-h-screen flex-col bg-background text-foreground selection:bg-mina-gold selection:text-white">
       {/* Premium Navigation */}
@@ -98,7 +117,7 @@ export default function Home() {
           <div className="mb-16 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
             <div className="space-y-4">
               <h2 className="text-[10px] font-bold uppercase tracking-[0.3em] text-mina-gold md:text-xs md:tracking-[0.4em]">Curations Exclusives</h2>
-              <h3 className="font-serif text-3xl font-light md:text-5xl">Les Essentiels de la Reine</h3>
+              <h3 className="font-serif text-3xl font-light md:text-5xl">Dernières Actualités</h3>
             </div>
             <Link href="/shop" className="text-[10px] font-bold uppercase tracking-widest border-b border-foreground pb-1 hover:text-mina-gold hover:border-mina-gold transition-all md:text-xs">
               Tout Voir
@@ -106,62 +125,33 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {/* PRODUCT 1: VIETNAM DDR NOIR 12" */}
-            <div className="group cursor-pointer">
-              <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
-                <div className="absolute inset-0 flex items-center justify-center bg-mina-onyx/5 group-hover:scale-110 transition-transform duration-700">
-                  <span className="font-serif text-lg italic opacity-20 text-center px-4">Vietnam Double Drawn 12"</span>
+            {livePosts.length > 0 ? livePosts.map((post: any) => (
+              <div key={post.id} className="group cursor-pointer">
+                <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
+                  {post.featuredImage ? (
+                    <Image
+                      src={post.featuredImage.node.sourceUrl}
+                      alt={post.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center bg-mina-onyx/5 group-hover:scale-110 transition-transform duration-700">
+                      <span className="font-serif text-lg italic opacity-20 text-center px-4">{post.title}</span>
+                    </div>
+                  )}
+                  <div className="absolute top-4 left-4 bg-mina-gold px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-white">Nouveauté</div>
                 </div>
-                <div className="absolute top-4 left-4 bg-mina-gold px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-white">Luxe Authentique</div>
+                <h4 className="font-serif text-lg mb-1 md:text-xl line-clamp-2" dangerouslySetInnerHTML={{ __html: post.title }}></h4>
+                <div className="text-[10px] uppercase tracking-widest opacity-50 mb-3 line-clamp-3" dangerouslySetInnerHTML={{ __html: post.excerpt }}></div>
+                <p className="font-sans font-bold text-mina-gold">{new Date(post.date).toLocaleDateString('fr-FR')}</p>
               </div>
-              <h4 className="font-serif text-lg mb-1 md:text-xl">Vietnamienne Double Drawn 12"</h4>
-              <p className="text-[9px] uppercase tracking-widest opacity-50 mb-3 md:text-[10px]">Noir Ébène - Densité Premium - 100% Naturel</p>
-              <div className="flex items-center gap-3">
-                <p className="font-sans font-bold text-mina-gold">85.000 FCFA</p>
+            )) : (
+              /* Fallback Mock Data if no posts found */
+              <div className="col-span-4 text-center py-20 opacity-30 italic font-serif">
+                En attente de vos premières créations royales sur WordPress...
               </div>
-            </div>
-
-            {/* PRODUCT 2: KINKY RAW HAIR 18" */}
-            <div className="group cursor-pointer">
-              <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
-                <div className="absolute inset-0 flex items-center justify-center bg-mina-gold/5 group-hover:scale-110 transition-transform duration-700">
-                  <span className="font-serif text-lg italic opacity-20 text-center px-4">Kinky Raw Hair 18"</span>
-                </div>
-                <div className="absolute top-4 left-4 bg-mina-emerald px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-white">Rare & Pur</div>
-              </div>
-              <h4 className="font-serif text-lg mb-1 md:text-xl">Kinky Raw Hair 18"</h4>
-              <p className="text-[9px] uppercase tracking-widest opacity-50 mb-3 md:text-[10px]">Texture Royale - Unseul donneur - Luxe Brut</p>
-              <p className="font-sans font-bold text-mina-gold">175.000 FCFA</p>
-            </div>
-
-            {/* PRODUCT 3: VIETNAM DDR MARRON 18" */}
-            <div className="group cursor-pointer">
-              <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
-                <div className="absolute inset-0 flex items-center justify-center bg-mina-onyx/5 group-hover:scale-110 transition-transform duration-700">
-                  <span className="font-serif text-lg italic opacity-20 text-center px-4">Vietnam DDR Marron 18"</span>
-                </div>
-                <div className="absolute top-4 left-4 bg-mina-bronze px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-white">Édition Limitée</div>
-              </div>
-              <h4 className="font-serif text-lg mb-1 md:text-xl">Vietnamienne Marron Luxury 18"</h4>
-              <p className="text-[9px] uppercase tracking-widest opacity-50 mb-3 md:text-[10px]">Double Drawn - Soyeux - Couleur Profonde</p>
-              <p className="font-sans font-bold text-mina-gold">215.000 FCFA</p>
-            </div>
-
-            {/* PRODUCT 4: FASHION BAG SET */}
-            <div className="group cursor-pointer">
-              <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
-                <div className="absolute inset-0 flex items-center justify-center bg-mina-gold/5 group-hover:scale-110 transition-transform duration-700">
-                  <span className="font-serif text-lg italic opacity-20 text-center px-4">Mina Fashion Bag Set</span>
-                </div>
-                <div className="absolute top-4 left-4 bg-mina-gold px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-white">Offre Lancement</div>
-              </div>
-              <h4 className="font-serif text-lg mb-1 md:text-xl">Ensemble Sac "Mina Queen"</h4>
-              <p className="text-[9px] uppercase tracking-widest opacity-50 mb-3 md:text-[10px]">3 Pièces - Noir / Marron / Rouge</p>
-              <div className="flex items-center gap-2">
-                <p className="font-sans font-bold text-mina-gold">12.900 FCFA</p>
-                <span className="text-[10px] line-through opacity-30 italic">19.900 FCFA</span>
-              </div>
-            </div>
+            )}
           </div>
         </section>
 
