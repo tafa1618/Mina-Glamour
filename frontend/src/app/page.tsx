@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Image from "next/image";
 import { fetchGraphQL } from "./lib/api";
 
 export default async function Home() {
