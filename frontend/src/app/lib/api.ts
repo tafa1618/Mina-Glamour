@@ -10,14 +10,30 @@ export async function fetchGraphQL(query: string, variables = {}) {
             query,
             variables,
         }),
-        next: { revalidate: 60 } // Cache for 1 minute
+        cache: 'no-store'
     });
 
     const json = await res.json();
     if (json.errors) {
-        console.error(json.errors);
+        console.error("GraphQL Errors:", JSON.stringify(json.errors, null, 2));
         throw new Error("Failed to fetch API");
     }
 
     return json.data;
+}
+export async function fetchWC(endpoint: string) {
+    const siteUrl = "https://headless.tafa-business.com";
+    const ck = process.env.WC_CONSUMER_KEY;
+    const cs = process.env.WC_CONSUMER_SECRET;
+
+    const url = `${siteUrl}/wp-json/wc/v3/${endpoint}${endpoint.includes('?') ? '&' : '?'}consumer_key=${ck}&consumer_secret=${cs}`;
+
+    const res = await fetch(url, {
+        next: { revalidate: 3600 } // Cache for 1 hour
+    });
+    if (!res.ok) {
+        console.error(`WC REST Error (${res.status}):`, await res.text());
+        return [];
+    }
+    return res.json();
 }

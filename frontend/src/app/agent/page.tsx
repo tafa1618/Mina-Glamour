@@ -96,7 +96,8 @@ export default function AgentDashboard() {
                 body: JSON.stringify({
                     name: mockProduct.name,
                     description: mockProduct.description,
-                    price: mockProduct.price
+                    price: mockProduct.price,
+                    images: previewUrl ? [previewUrl] : []
                 })
             });
             const data = await response.json();
