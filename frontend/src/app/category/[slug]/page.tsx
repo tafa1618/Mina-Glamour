@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { fetchWC } from "../../lib/api";
 import { notFound } from "next/navigation";
+import CartIcon from "@/components/CartIcon";
+import AddToCartButton from "@/components/AddToCartButton";
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -30,9 +32,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                             <Image src="/logo_mina_glamour.jpg" alt="Logo" fill className="object-cover" />
                         </div>
                     </Link>
-                    <Link href="/" className="text-[10px] font-bold uppercase tracking-widest text-mina-onyx hover:text-mina-gold transition-colors">
-                        ← Retour à la boutique
-                    </Link>
+                    <div className="flex items-center gap-6">
+                        <Link href="/" className="text-[10px] font-bold uppercase tracking-widest text-mina-onyx hover:text-mina-gold transition-colors">
+                            ← Boutique
+                        </Link>
+                        <CartIcon />
+                    </div>
                 </nav>
             </header>
 
@@ -77,9 +82,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                                 <div className="prose-description text-[10px] uppercase tracking-[0.1em] mb-4 line-clamp-2" dangerouslySetInnerHTML={{ __html: product.short_description || product.description }}></div>
                                 <div className="flex items-center justify-between border-t border-mina-onyx/5 pt-4">
                                     <p className="font-sans font-black text-mina-gold text-lg">{formatPrice(product.price)}</p>
-                                    <div className="h-8 w-8 rounded-full border border-mina-onyx/10 flex items-center justify-center group-hover:bg-mina-onyx group-hover:text-white transition-all">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                                    </div>
+                                    <AddToCartButton product={product} showIconOnly />
                                 </div>
                             </Link>
                         ))}

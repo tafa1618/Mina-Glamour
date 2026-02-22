@@ -3,6 +3,8 @@ import Image from "next/image";
 import { fetchWC } from "../../lib/api";
 import { notFound } from "next/navigation";
 import ProductGallery from "@/components/ProductGallery";
+import CartIcon from "@/components/CartIcon";
+import AddToCartButton from "@/components/AddToCartButton";
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
@@ -30,9 +32,12 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                             <Image src="/logo_mina_glamour.jpg" alt="Logo" fill className="object-cover" />
                         </div>
                     </Link>
-                    <Link href="/" className="text-[10px] font-bold uppercase tracking-widest text-mina-onyx hover:text-mina-gold transition-colors">
-                        ← Retour à la boutique
-                    </Link>
+                    <div className="flex items-center gap-6">
+                        <Link href="/" className="text-[10px] font-bold uppercase tracking-widest text-mina-onyx hover:text-mina-gold transition-colors">
+                            ← Boutique
+                        </Link>
+                        <CartIcon />
+                    </div>
                 </nav>
             </header>
 

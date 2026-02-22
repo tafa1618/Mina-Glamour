@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   description: "Boutique e-commerce premium au Sénégal spécialisée dans les cheveux naturels et la mode féminine.",
 };
 
+import { CartProvider } from "@/context/CartContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,7 +46,9 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={`${cormorant.variable} ${inter.variable} antialiased`}>
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
         <noscript>
           <img
             height="1"

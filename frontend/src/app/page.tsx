@@ -2,6 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { fetchWC } from "./lib/api";
 
+import CartIcon from "@/components/CartIcon";
+import AddToCartButton from "@/components/AddToCartButton";
+
 export default async function Home() {
   const liveProducts = await fetchWC("products?per_page=8");
 
@@ -58,11 +61,7 @@ export default async function Home() {
             <Link href="/agent" className="text-[10px] font-bold uppercase tracking-[0.2em] border border-mina-gold/20 px-4 py-2 rounded-full hover:bg-mina-gold/10 transition-all text-mina-gold">
               Agent Manager
             </Link>
-            <Link href="/cart" className="relative text-foreground/70 transition-colors hover:text-mina-gold hover:scale-110">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6zM3 6h18M16 10a4 4 0 01-8 0" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
+            <CartIcon />
           </div>
         </nav>
       </header>
@@ -148,9 +147,7 @@ export default async function Home() {
                 <div className="prose-description text-[10px] uppercase tracking-[0.1em] mb-4 line-clamp-2" dangerouslySetInnerHTML={{ __html: product.short_description || product.description }}></div>
                 <div className="flex items-center justify-between border-t border-mina-onyx/5 pt-4">
                   <p className="font-sans font-black text-mina-gold text-lg">{formatPrice(product.price)}</p>
-                  <div className="h-8 w-8 rounded-full border border-mina-onyx/10 flex items-center justify-center group-hover:bg-mina-onyx group-hover:text-white transition-all">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14" /></svg>
-                  </div>
+                  <AddToCartButton product={product} showIconOnly />
                 </div>
               </Link>
             )) : (
