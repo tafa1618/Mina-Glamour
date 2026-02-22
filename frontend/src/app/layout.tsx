@@ -14,12 +14,7 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Mina Glamour | Cheveux de rêve, allure de Reine",
-  description: "Boutique e-commerce premium au Sénégal spécialisée dans les cheveux naturels et la mode féminine.",
-};
-
-import { CartProvider } from "@/context/CartContext";
+import { SITE_CONFIG } from "@/app/lib/config";
 
 export default function RootLayout({
   children,
@@ -29,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
-        {/* Facebook Pixel - Placeholder ID */}
+        {/* Facebook Pixel */}
         <Script id="fb-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -40,7 +35,7 @@ export default function RootLayout({
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', 'PIXEL_ID_PLACEHOLDER');
+            fbq('init', '${SITE_CONFIG.pixelId}');
             fbq('track', 'PageView');
           `}
         </Script>
@@ -54,7 +49,7 @@ export default function RootLayout({
             height="1"
             width="1"
             style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=PIXEL_ID_PLACEHOLDER&ev=PageView&noscript=1"
+            src={`https://www.facebook.com/tr?id=${SITE_CONFIG.pixelId}&ev=PageView&noscript=1`}
           />
         </noscript>
       </body>

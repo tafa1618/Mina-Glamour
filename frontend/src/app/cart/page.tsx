@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
+import { SITE_CONFIG } from "@/app/lib/config";
 
 export default function CartPage() {
     const { cart, removeFromCart, updateQuantity, totalPrice, itemsCount } = useCart();
@@ -12,8 +13,20 @@ export default function CartPage() {
     };
 
     const handleWhatsAppCheckout = () => {
-        const phoneNumber = "221770000000"; // Placeholder - À remplacer par le vrai numéro
-        let message = "Bonjour Mina Glamour ! 👑\n\nJe souhaite passer commande pour les articles suivants :\n\n";
+        const phoneNumber = SITE_CONFIG.whatsappNumber;
+
+        // Tracking Facebook Pixel
+        if (typeof window !== "undefined" && (window as any).fbq) {
+            (window as any).fbq('track', 'InitiateCheckout', {
+                content_ids: cart.map(item => item.id),
+                content_type: 'product',
+                value: totalPrice,
+                currency: 'XOF',
+                num_items: itemsCount
+            });
+        }
+
+        let message = `Bonjour ${SITE_CONFIG.name} ! 👑\n\nJe souhaite passer commande pour les articles suivants :\n\n`;
 
         cart.forEach((item) => {
             message += `• ${item.name} (x${item.quantity}) - ${item.price}\n`;

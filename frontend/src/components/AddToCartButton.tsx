@@ -18,6 +18,17 @@ export default function AddToCartButton({ product, showIconOnly = false }: AddTo
         setIsAdding(true);
         addToCart(product);
 
+        // Tracking Facebook Pixel
+        if (typeof window !== "undefined" && (window as any).fbq) {
+            (window as any).fbq('track', 'AddToCart', {
+                content_name: product.name,
+                content_ids: [product.id],
+                content_type: 'product',
+                value: parseFloat(product.price.replace(/[^0-9.]/g, "")),
+                currency: 'XOF'
+            });
+        }
+
         setTimeout(() => {
             setIsAdding(false);
         }, 1000);
