@@ -12,9 +12,9 @@ export default async function Home() {
   };
 
   const categories = [
-    { name: "Raw Hair Vietnam", img: "https://images.unsplash.com/photo-1549439602-43ebca2327af?q=80&w=600", link: "#" },
-    { name: "Mina Bags", img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600", link: "#" },
-    { name: "Prêt-à-Porter", img: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=600", link: "#" }
+    { name: "Raw Hair Vietnam", img: "https://images.unsplash.com/photo-1549439602-43ebca2327af?q=80&w=600", link: "/category/cheveux" },
+    { name: "Mina Bags", img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600", link: "/category/sacs" },
+    { name: "Prêt-à-Porter", img: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=600", link: "/category/vetements" }
   ];
 
   return (
@@ -38,13 +38,18 @@ export default async function Home() {
           </Link>
 
           <div className="hidden space-x-12 text-[11px] font-bold uppercase tracking-[0.3em] md:flex lg:space-x-16">
-            {["Cheveux", "Sacs", "Vêtements", "Boutique"].map((item) => (
+            {[
+              { label: "Cheveux", href: "/category/cheveux" },
+              { label: "Sacs", href: "/category/sacs" },
+              { label: "Vêtements", href: "/category/vetements" },
+              { label: "Boutique", href: "#collection" },
+            ].map((item) => (
               <Link
-                key={item}
-                href="#"
+                key={item.label}
+                href={item.href}
                 className="relative text-foreground/80 transition-colors hover:text-mina-gold after:absolute after:-bottom-2 after:left-1/2 after:h-[1px] after:w-0 after:bg-mina-gold after:transition-all after:duration-300 hover:after:left-0 hover:after:w-full"
               >
-                {item}
+                {item.label}
               </Link>
             ))}
           </div>
