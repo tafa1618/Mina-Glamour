@@ -58,7 +58,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                         </div>
 
                         <div className="space-y-6">
-                            <div className="prose prose-zinc max-w-none text-mina-onyx/70 leading-relaxed font-light text-base md:text-lg">
+                            <div className="prose-description prose max-w-none leading-relaxed font-light text-base md:text-lg">
                                 <div dangerouslySetInnerHTML={{ __html: product.description }}></div>
                             </div>
 

@@ -99,3 +99,23 @@ h6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Force readable text in WordPress product descriptions regardless of inline styles */
+.prose-description,
+.prose-description * {
+  color: #4A3F35 !important;
+  -webkit-text-fill-color: #4A3F35 !important;
+}
+
+.prose-description p,
+.prose-description li,
+.prose-description span {
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.prose-description strong {
+  color: #1A1A1A !important;
+  -webkit-text-fill-color: #1A1A1A !important;
+  font-weight: 600;
+}
