@@ -74,7 +74,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                                     )}
                                 </div>
                                 <h3 className="font-serif text-xl mb-2 text-mina-onyx group-hover:text-mina-gold transition-colors" dangerouslySetInnerHTML={{ __html: product.name }}></h3>
-                                <div className="text-[10px] uppercase tracking-[0.1em] opacity-40 mb-4 line-clamp-2" dangerouslySetInnerHTML={{ __html: product.short_description || product.description }}></div>
+                                <div className="prose-description text-[10px] uppercase tracking-[0.1em] mb-4 line-clamp-2" dangerouslySetInnerHTML={{ __html: product.short_description || product.description }}></div>
                                 <div className="flex items-center justify-between border-t border-mina-onyx/5 pt-4">
                                     <p className="font-sans font-black text-mina-gold text-lg">{formatPrice(product.price)}</p>
                                     <div className="h-8 w-8 rounded-full border border-mina-onyx/10 flex items-center justify-center group-hover:bg-mina-onyx group-hover:text-white transition-all">

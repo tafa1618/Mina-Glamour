@@ -12,7 +12,7 @@ export default async function Home() {
   };
 
   const categories = [
-    { name: "Raw Hair Vietnam", img: "https://images.unsplash.com/photo-1549439602-43ebca2327af?q=80&w=600", link: "/category/cheveux-naturel" },
+    { name: "Cheveux Naturel", img: "https://images.unsplash.com/photo-1549439602-43ebca2327af?q=80&w=600", link: "/category/cheveux-naturel" },
     { name: "Mina Bags", img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600", link: "/category/sacs" },
     { name: "Prêt-à-Porter", img: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=600", link: "/category/vetements" }
   ];
@@ -39,7 +39,7 @@ export default async function Home() {
 
           <div className="hidden space-x-12 text-[11px] font-bold uppercase tracking-[0.3em] md:flex lg:space-x-16">
             {[
-              { label: "Cheveux", href: "/category/cheveux-naturel" },
+              { label: "Cheveux Naturel", href: "/category/cheveux-naturel" },
               { label: "Sacs", href: "/category/sacs" },
               { label: "Vêtements", href: "/category/vetements" },
               { label: "Boutique", href: "#collection" },
@@ -145,7 +145,7 @@ export default async function Home() {
                   )}
                 </div>
                 <h4 className="font-serif text-xl mb-2 text-mina-onyx group-hover:text-mina-gold transition-colors" dangerouslySetInnerHTML={{ __html: product.name }}></h4>
-                <div className="text-[10px] uppercase tracking-[0.1em] opacity-40 mb-4 line-clamp-2" dangerouslySetInnerHTML={{ __html: product.short_description || product.description }}></div>
+                <div className="prose-description text-[10px] uppercase tracking-[0.1em] mb-4 line-clamp-2" dangerouslySetInnerHTML={{ __html: product.short_description || product.description }}></div>
                 <div className="flex items-center justify-between border-t border-mina-onyx/5 pt-4">
                   <p className="font-sans font-black text-mina-gold text-lg">{formatPrice(product.price)}</p>
                   <div className="h-8 w-8 rounded-full border border-mina-onyx/10 flex items-center justify-center group-hover:bg-mina-onyx group-hover:text-white transition-all">
