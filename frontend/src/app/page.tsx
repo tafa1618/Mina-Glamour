@@ -96,32 +96,32 @@ export default async function Home() {
         {/* Category Explorer */}
         <section className="py-24 bg-white">
           <div className="mx-auto max-w-7xl px-6 md:px-8">
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-               {categories.map((cat) => (
-                 <Link key={cat.name} href={cat.link} className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-zinc-100 shadow-lg">
-                    <Image src={cat.img} alt={cat.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
-                    <div className="absolute bottom-8 left-8">
-                      <h3 className="text-white font-serif text-2xl md:text-3xl mb-2">{cat.name}</h3>
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-mina-gold border-b border-mina-gold/50 pb-1">Explorer →</span>
-                    </div>
-                 </Link>
-               ))}
-             </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {categories.map((cat) => (
+                <Link key={cat.name} href={cat.link} className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-zinc-100 shadow-lg">
+                  <Image src={cat.img} alt={cat.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-90 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
+                  <div className="absolute bottom-8 left-8">
+                    <h3 className="text-white font-serif text-2xl md:text-3xl mb-2">{cat.name}</h3>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-mina-gold border-b border-mina-gold/50 pb-1">Explorer →</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Main Product Grid */}
         <section id="collection" className="mx-auto max-w-7xl px-6 py-24 md:px-8 border-t border-mina-onyx/5">
           <div className="mb-20 text-center">
-              <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-mina-gold mb-4">La Boutique Exclusive</h2>
-              <h3 className="font-serif text-4xl font-light md:text-6xl text-mina-onyx">Incontournables du Moment</h3>
-              <div className="mx-auto mt-6 h-[1px] w-24 bg-mina-gold/30"></div>
+            <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-mina-gold mb-4">La Boutique Exclusive</h2>
+            <h3 className="font-serif text-4xl font-light md:text-6xl text-mina-onyx">Incontournables du Moment</h3>
+            <div className="mx-auto mt-6 h-[1px] w-24 bg-mina-gold/30"></div>
           </div>
 
           <div className="grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
             {liveProducts.length > 0 ? liveProducts.map((product: any) => (
-              <div key={product.id} className="group cursor-pointer">
+              <Link key={product.id} href={`/product/${product.id}`} className="group cursor-pointer">
                 <div className="relative aspect-[3/4] overflow-hidden bg-zinc-50 mb-6 rounded-xl border border-mina-onyx/5">
                   {product.images && product.images[0] ? (
                     <Image
@@ -143,11 +143,11 @@ export default async function Home() {
                 <div className="text-[10px] uppercase tracking-[0.1em] opacity-40 mb-4 line-clamp-2" dangerouslySetInnerHTML={{ __html: product.short_description || product.description }}></div>
                 <div className="flex items-center justify-between border-t border-mina-onyx/5 pt-4">
                   <p className="font-sans font-black text-mina-gold text-lg">{formatPrice(product.price)}</p>
-                  <button className="h-8 w-8 rounded-full border border-mina-onyx/10 flex items-center justify-center hover:bg-mina-onyx hover:text-white transition-all">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14"/></svg>
-                  </button>
+                  <div className="h-8 w-8 rounded-full border border-mina-onyx/10 flex items-center justify-center group-hover:bg-mina-onyx group-hover:text-white transition-all">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14" /></svg>
+                  </div>
                 </div>
-              </div>
+              </Link>
             )) : (
               <div className="col-span-4 text-center py-24 opacity-30 italic font-serif">
                 Nos artisans préparent votre prochaine collection...
@@ -158,42 +158,42 @@ export default async function Home() {
 
         {/* The Brand Spirit Section */}
         <section className="bg-mina-onyx py-32 text-white/90">
-             <div className="mx-auto max-w-7xl px-6 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <div className="relative aspect-[4/5] md:aspect-video rounded-3xl overflow-hidden shadow-2xl group">
-                   <Image src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=1200" alt="Brand Story" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" />
-                   <div className="absolute inset-0 bg-mina-gold/10 mix-blend-overlay"></div>
+          <div className="mx-auto max-w-7xl px-6 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="relative aspect-[4/5] md:aspect-video rounded-3xl overflow-hidden shadow-2xl group">
+              <Image src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=1200" alt="Brand Story" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" />
+              <div className="absolute inset-0 bg-mina-gold/10 mix-blend-overlay"></div>
+            </div>
+            <div className="space-y-10">
+              <span className="text-mina-gold text-[10px] font-bold uppercase tracking-[0.5em]">L'Esprit Mina Glamour</span>
+              <h2 className="font-serif text-5xl md:text-7xl font-light leading-tight">Plus qu'une Marque, <span className="italic">Une Identité</span></h2>
+              <p className="text-lg font-light leading-relaxed opacity-70">
+                Née de la vision d'offrir l'élégance suprême aux femmes de Dakar et d'ailleurs, Mina Glamour ne sélectionne que la perfection. Chaque mèche, chaque robe, chaque sac raconte une histoire de noblesse et de modernité.
+              </p>
+              <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
+                <div>
+                  <p className="text-mina-gold text-3xl font-serif mb-2 italic">Qualité</p>
+                  <p className="text-xs uppercase tracking-widest opacity-50">Sélection Rigoureuse</p>
                 </div>
-                <div className="space-y-10">
-                   <span className="text-mina-gold text-[10px] font-bold uppercase tracking-[0.5em]">L'Esprit Mina Glamour</span>
-                   <h2 className="font-serif text-5xl md:text-7xl font-light leading-tight">Plus qu'une Marque, <span className="italic">Une Identité</span></h2>
-                   <p className="text-lg font-light leading-relaxed opacity-70">
-                     Née de la vision d'offrir l'élégance suprême aux femmes de Dakar et d'ailleurs, Mina Glamour ne sélectionne que la perfection. Chaque mèche, chaque robe, chaque sac raconte une histoire de noblesse et de modernité.
-                   </p>
-                   <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
-                      <div>
-                         <p className="text-mina-gold text-3xl font-serif mb-2 italic">Qualité</p>
-                         <p className="text-xs uppercase tracking-widest opacity-50">Sélection Rigoureuse</p>
-                      </div>
-                      <div>
-                         <p className="text-mina-gold text-3xl font-serif mb-2 italic">Service</p>
-                         <p className="text-xs uppercase tracking-widest opacity-50">Accompagnement VIP</p>
-                      </div>
-                   </div>
+                <div>
+                  <p className="text-mina-gold text-3xl font-serif mb-2 italic">Service</p>
+                  <p className="text-xs uppercase tracking-widest opacity-50">Accompagnement VIP</p>
                 </div>
-             </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Newsletter Section */}
         <section className="bg-mina-gold/5 py-32 text-center">
-             <div className="mx-auto max-w-3xl px-6">
-                <h4 className="text-[10px] font-bold uppercase tracking-[0.5em] text-mina-gold mb-6">Cercle Privé Mina</h4>
-                <h2 className="font-serif text-4xl md:text-6xl mb-8 text-mina-onyx">Rejoignez l'Elite</h2>
-                <p className="text-lg font-light opacity-60 mb-12">Soyez la première informée de nos arrivages exclusifs et recevez des invitations pour nos ventes privées.</p>
-                <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-                   <input type="email" placeholder="Votre email royal" className="flex-1 px-8 py-5 border-b border-mina-gold/30 bg-transparent focus:outline-none focus:border-mina-gold text-lg italic text-mina-onyx" />
-                   <button className="gold-gradient text-white px-10 py-5 text-[11px] font-bold uppercase tracking-widest rounded-full shadow-lg hover:scale-105 transition-transform">S'abonner</button>
-                </div>
-             </div>
+          <div className="mx-auto max-w-3xl px-6">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.5em] text-mina-gold mb-6">Cercle Privé Mina</h4>
+            <h2 className="font-serif text-4xl md:text-6xl mb-8 text-mina-onyx">Rejoignez l'Elite</h2>
+            <p className="text-lg font-light opacity-60 mb-12">Soyez la première informée de nos arrivages exclusifs et recevez des invitations pour nos ventes privées.</p>
+            <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+              <input type="email" placeholder="Votre email royal" className="flex-1 px-8 py-5 border-b border-mina-gold/30 bg-transparent focus:outline-none focus:border-mina-gold text-lg italic text-mina-onyx" />
+              <button className="gold-gradient text-white px-10 py-5 text-[11px] font-bold uppercase tracking-widest rounded-full shadow-lg hover:scale-105 transition-transform">S'abonner</button>
+            </div>
+          </div>
         </section>
 
         {/* Stats / Trust Bar */}
